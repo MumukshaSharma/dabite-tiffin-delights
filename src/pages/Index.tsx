@@ -6,6 +6,7 @@ import MenuPreview from '@/components/MenuPreview';
 import Testimonials from '@/components/Testimonials';
 import CTA from '@/components/CTA';
 import Footer from '@/components/Footer';
+import AIChat from '@/components/AIChat';
 
 const Index = () => {
   return (
@@ -17,6 +18,7 @@ const Index = () => {
       <Testimonials />
       <CTA />
       <Footer />
+      <AIChat />
     </div>
   );
 };

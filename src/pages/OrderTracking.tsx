@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
-import { CheckCircle, Clock, Truck, Chef, MapPin } from 'lucide-react';
+import { CheckCircle, Clock, Truck, ChefHat, MapPin } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
@@ -25,7 +25,7 @@ const OrderTracking = () => {
       id: 2,
       title: 'Preparing in Kitchen',
       description: 'Our chefs are preparing your fresh meal',
-      icon: Chef,
+      icon: ChefHat,
       completed: true,
       time: '11:00 AM'
     },

@@ -10,7 +10,7 @@ import {
   NavigationMenuTrigger 
 } from '@/components/ui/navigation-menu';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, ShoppingCart, User } from 'lucide-react';
+import { Menu, ShoppingCart, User, MapPin } from 'lucide-react';
 import AuthDialog from '@/components/auth/AuthDialog';
 import { useNavigate } from 'react-router-dom';
 
@@ -33,6 +33,10 @@ const Navbar = () => {
     navigate('/onboarding');
   };
 
+  const handleLoginClick = () => {
+    navigate('/login');
+  };
+
   return (
     <>
       <nav className="sticky top-0 z-50 bg-stark-white/95 backdrop-blur-sm border-b border-woodland/10">
@@ -40,7 +44,7 @@ const Navbar = () => {
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <div className="flex-shrink-0">
-              <h1 className="text-2xl font-display font-bold text-woodland">
+              <h1 className="text-2xl font-display font-bold text-woodland cursor-pointer" onClick={() => navigate('/')}>
                 Dabite
               </h1>
             </div>
@@ -65,6 +69,15 @@ const Navbar = () => {
 
             {/* Desktop Actions */}
             <div className="hidden md:flex items-center space-x-4">
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                className="text-kelp hover:text-woodland"
+                onClick={() => navigate('/addresses')}
+              >
+                <MapPin className="h-5 w-5 mr-2" />
+                Address
+              </Button>
               <Button variant="ghost" size="sm" className="text-kelp hover:text-woodland">
                 <ShoppingCart className="h-5 w-5 mr-2" />
                 Cart
@@ -79,13 +92,13 @@ const Navbar = () => {
                   variant="ghost" 
                   size="sm" 
                   className="text-kelp hover:text-woodland"
-                  onClick={() => setAuthOpen(true)}
+                  onClick={handleLoginClick}
                 >
                   <User className="h-5 w-5 mr-2" />
                   Login
                 </Button>
               )}
-              <Button className="bg-woodland hover:bg-kelp text-stark-white">
+              <Button className="bg-woodland hover:bg-kelp text-stark-white" onClick={() => navigate('/subscription')}>
                 Order Now
               </Button>
             </div>
@@ -111,6 +124,14 @@ const Navbar = () => {
                       </a>
                     ))}
                     <div className="pt-4 border-t border-woodland/10">
+                      <Button 
+                        variant="ghost" 
+                        className="w-full justify-start text-kelp hover:text-woodland mb-2"
+                        onClick={() => navigate('/addresses')}
+                      >
+                        <MapPin className="h-5 w-5 mr-2" />
+                        Address
+                      </Button>
                       <Button variant="ghost" className="w-full justify-start text-kelp hover:text-woodland mb-2">
                         <ShoppingCart className="h-5 w-5 mr-2" />
                         Cart
@@ -124,13 +145,13 @@ const Navbar = () => {
                         <Button 
                           variant="ghost" 
                           className="w-full justify-start text-kelp hover:text-woodland mb-4"
-                          onClick={() => setAuthOpen(true)}
+                          onClick={handleLoginClick}
                         >
                           <User className="h-5 w-5 mr-2" />
                           Login
                         </Button>
                       )}
-                      <Button className="w-full bg-woodland hover:bg-kelp text-stark-white">
+                      <Button className="w-full bg-woodland hover:bg-kelp text-stark-white" onClick={() => navigate('/subscription')}>
                         Order Now
                       </Button>
                     </div>

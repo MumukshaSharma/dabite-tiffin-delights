@@ -12,7 +12,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Badge } from '@/components/ui/badge';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, Search, MapPin, User, Star, CreditCard, Heart, Clock, Gift, LogOut, Settings } from 'lucide-react';
+import { Menu, Search, MapPin, User, Star, CreditCard, Heart, Clock, Gift, LogOut, Settings, ChefHat } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
@@ -54,12 +54,12 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-stark-white/95 backdrop-blur-sm border-b border-woodland/10">
+    <nav className="sticky top-0 z-50 bg-warm-white/95 backdrop-blur-sm border-b border-kelp-green/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-14 sm:h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-xl sm:text-2xl font-display font-bold text-woodland cursor-pointer" onClick={() => navigate('/home')}>
+            <h1 className="text-xl sm:text-2xl font-display font-bold text-kelp-green cursor-pointer" onClick={() => navigate('/home')}>
               Dabite
             </h1>
           </div>
@@ -69,7 +69,7 @@ const Navbar = () => {
             {/* Location Picker */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="text-kelp hover:text-woodland">
+                <Button variant="ghost" className="text-sage hover:text-kelp-green">
                   <MapPin className="h-4 w-4 mr-2" />
                   {location}
                 </Button>
@@ -85,10 +85,10 @@ const Navbar = () => {
 
             {/* Search Bar */}
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-kelp/60" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-sage/60" />
               <Input
                 placeholder="Search for food, kitchen..."
-                className="pl-10 w-80 border-woodland/30 focus:border-woodland"
+                className="pl-10 w-80 border-kelp-green/30 focus:border-kelp-green bg-warm-white"
               />
             </div>
 
@@ -96,7 +96,7 @@ const Navbar = () => {
             {isLoggedIn ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="text-kelp hover:text-woodland">
+                  <Button variant="ghost" className="text-sage hover:text-kelp-green">
                     <User className="h-4 w-4 mr-2" />
                     Account
                   </Button>
@@ -104,7 +104,7 @@ const Navbar = () => {
                 <DropdownMenuContent className="w-72" align="end">
                   {accountMenuItems.map((section, sectionIndex) => (
                     <div key={section.section}>
-                      <DropdownMenuLabel className="text-xs text-kelp/60 uppercase tracking-wide">
+                      <DropdownMenuLabel className="text-xs text-sage/60 uppercase tracking-wide">
                         {section.section}
                       </DropdownMenuLabel>
                       {section.items.map((item, itemIndex) => {
@@ -115,11 +115,11 @@ const Navbar = () => {
                             className="flex items-center space-x-3 py-3 cursor-pointer"
                             onClick={item.action}
                           >
-                            <Icon className="h-4 w-4 text-woodland" />
+                            <Icon className="h-4 w-4 text-kelp-green" />
                             <div className="flex-1">
-                              <div className="font-medium text-woodland">{item.label}</div>
+                              <div className="font-medium text-kelp-green">{item.label}</div>
                               {item.sublabel && (
-                                <div className="text-xs text-kelp/60">{item.sublabel}</div>
+                                <div className="text-xs text-sage/60">{item.sublabel}</div>
                               )}
                             </div>
                           </DropdownMenuItem>
@@ -133,7 +133,7 @@ const Navbar = () => {
             ) : (
               <Button 
                 variant="ghost" 
-                className="text-kelp hover:text-woodland"
+                className="text-sage hover:text-kelp-green"
                 onClick={() => navigate('/')}
               >
                 <User className="h-4 w-4 mr-2" />
@@ -147,39 +147,74 @@ const Navbar = () => {
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="sm">
-                  <Menu className="h-6 w-6 text-woodland" />
+                  <Menu className="h-6 w-6 text-kelp-green" />
                 </Button>
               </SheetTrigger>
-              <SheetContent className="bg-stark-white w-80">
+              <SheetContent className="bg-warm-white w-80">
                 <div className="flex flex-col space-y-6 mt-8">
                   {/* Mobile Search */}
                   <div className="relative">
-                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-kelp/60" />
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-sage/60" />
                     <Input
                       placeholder="Search for food, kitchen..."
-                      className="pl-10 border-woodland/30 focus:border-woodland"
+                      className="pl-10 border-kelp-green/30 focus:border-kelp-green bg-warm-white"
                     />
                   </div>
 
                   {/* Mobile Location */}
-                  <Button variant="ghost" className="w-full justify-start text-kelp hover:text-woodland">
+                  <Button variant="ghost" className="w-full justify-start text-sage hover:text-kelp-green">
                     <MapPin className="h-5 w-5 mr-3" />
                     {location}
                   </Button>
 
+                  {/* Menu Option */}
+                  <Button 
+                    variant="ghost" 
+                    className="w-full justify-start text-sage hover:text-kelp-green"
+                    onClick={() => {
+                      navigate('/menu');
+                      setIsOpen(false);
+                    }}
+                  >
+                    <ChefHat className="h-5 w-5 mr-3" />
+                    Menu
+                  </Button>
+
                   {isLoggedIn && (
                     <div className="space-y-2">
-                      <Button variant="ghost" className="w-full justify-start text-kelp hover:text-woodland">
+                      <Button 
+                        variant="ghost" 
+                        className="w-full justify-start text-sage hover:text-kelp-green"
+                        onClick={() => {
+                          navigate('/subscription');
+                          setIsOpen(false);
+                        }}
+                      >
                         <Star className="h-5 w-5 mr-3" />
-                        Active Subscription
+                        Subscription Plan
                       </Button>
-                      <Button variant="ghost" className="w-full justify-start text-kelp hover:text-woodland">
+                      <Button 
+                        variant="ghost" 
+                        className="w-full justify-start text-sage hover:text-kelp-green"
+                        onClick={() => {
+                          navigate('/order-tracking');
+                          setIsOpen(false);
+                        }}
+                      >
                         <Clock className="h-5 w-5 mr-3" />
                         Order History
                       </Button>
-                      <Button variant="ghost" className="w-full justify-start text-kelp hover:text-woodland">
+                      <Button variant="ghost" className="w-full justify-start text-sage hover:text-kelp-green">
                         <Heart className="h-5 w-5 mr-3" />
                         Favorites
+                      </Button>
+                      <Button variant="ghost" className="w-full justify-start text-sage hover:text-kelp-green">
+                        <User className="h-5 w-5 mr-3" />
+                        Account
+                      </Button>
+                      <Button variant="ghost" className="w-full justify-start text-sage hover:text-kelp-green">
+                        <Settings className="h-5 w-5 mr-3" />
+                        Settings
                       </Button>
                     </div>
                   )}

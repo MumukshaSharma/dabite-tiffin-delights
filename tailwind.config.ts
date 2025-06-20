@@ -63,11 +63,14 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        // Design system colors
-        'stark-white': '#FFFFFF',
-        'woodland': '#2D5016',
-        'kelp': '#8FBC8F',
-        'confetti': '#E6F3E6',
+        // New color theme
+        'warm-white': '#FAF9F6',
+        'kelp-green': '#3E4E42',
+        'sage': '#B8C1A9',
+        'soft-apricot': '#FFE5B4',
+        'charcoal': '#2F2F2F',
+        'soft-lemon': '#FFF3B0',
+        'terra-clay': '#D38C6D',
       },
       fontFamily: {
         'display': ['Inter', 'system-ui', 'sans-serif'],

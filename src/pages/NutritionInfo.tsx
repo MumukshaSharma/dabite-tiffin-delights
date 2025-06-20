@@ -1,8 +1,7 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import { Target, Zap, Heart, Muscle, Apple, Utensils } from 'lucide-react';
+import { Target, Zap, Heart, Dumbbell, Apple, Utensils } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
@@ -24,7 +23,7 @@ const NutritionInfo = () => {
       protein: "150-200g",
       carbs: "200-300g",
       fats: "70-100g",
-      icon: <Muscle className="h-6 w-6" />,
+      icon: <Dumbbell className="h-6 w-6" />,
       color: "bg-red-500",
       meals: ["Protein pancakes", "Chicken rice bowl", "Fish with sweet potato"]
     },

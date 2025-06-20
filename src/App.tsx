@@ -4,6 +4,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
+import LoadingScreen from "./components/LoadingScreen";
 import Index from "./pages/Index";
 import Onboarding from "./pages/Onboarding";
 import Login from "./pages/Login";
@@ -11,38 +13,65 @@ import Signup from "./pages/Signup";
 import Menu from "./pages/Menu";
 import Subscription from "./pages/Subscription";
 import Payment from "./pages/Payment";
+import FoodCheckout from "./pages/FoodCheckout";
+import SubscriptionCheckout from "./pages/SubscriptionCheckout";
 import OrderTracking from "./pages/OrderTracking";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import AddressManagement from "./pages/AddressManagement";
+import OrderTiffin from "./pages/OrderTiffin";
+import WatchStory from "./pages/WatchStory";
+import FAQ from "./pages/FAQ";
+import NutritionInfo from "./pages/NutritionInfo";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/home" element={<Index />} />
-          <Route path="/onboarding" element={<Onboarding />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/menu" element={<Menu />} />
-          <Route path="/subscription" element={<Subscription />} />
-          <Route path="/payment" element={<Payment />} />
-          <Route path="/order-tracking" element={<OrderTracking />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/addresses" element={<AddressManagement />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/home" element={<Index />} />
+            <Route path="/onboarding" element={<Onboarding />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/menu" element={<Menu />} />
+            <Route path="/subscription" element={<Subscription />} />
+            <Route path="/payment" element={<Payment />} />
+            <Route path="/food-checkout" element={<FoodCheckout />} />
+            <Route path="/subscription-checkout" element={<SubscriptionCheckout />} />
+            <Route path="/order-tracking" element={<OrderTracking />} />
+            <Route path="/order-tiffin" element={<OrderTiffin />} />
+            <Route path="/watch-story" element={<WatchStory />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/addresses" element={<AddressManagement />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/nutrition" element={<NutritionInfo />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;

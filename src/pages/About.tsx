@@ -1,179 +1,122 @@
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Heart, Users, Target, Award } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Users, Heart, Award, Target, MapPin, Mail } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 const About = () => {
+  const stats = [
+    { icon: <Users className="h-8 w-8" />, number: "10K+", label: "Happy Students" },
+    { icon: <Heart className="h-8 w-8" />, number: "50+", label: "Home Kitchens" },
+    { icon: <Award className="h-8 w-8" />, number: "4.8", label: "Average Rating" },
+    { icon: <Target className="h-8 w-8" />, number: "100K+", label: "Meals Delivered" }
+  ];
+
   return (
     <div className="min-h-screen bg-stark-white">
       <Navbar />
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
           {/* Hero Section */}
           <div className="text-center mb-16">
-            <h1 className="text-4xl font-display font-bold text-woodland mb-4">Our Story</h1>
-            <p className="text-lg text-kelp max-w-2xl mx-auto">
-              How two friends turned their college food struggles into a solution that feeds thousands of students across India
-            </p>
+            <h1 className="text-3xl md:text-4xl font-display font-bold text-woodland mb-6">
+              About Dabite
+            </h1>
+            <div className="bg-woodland/5 backdrop-blur-sm rounded-2xl p-8 md:p-12">
+              <p className="text-lg md:text-xl text-kelp leading-relaxed text-center max-w-3xl mx-auto">
+                We, <span className="font-semibold text-woodland">Mumuksha Sharma</span> and <span className="font-semibold text-woodland">Tanishka Jain</span>, Computer Science students, started Dabite out of a need. One of our friends in a PG struggled with food options, and we ourselves faced gaps in regular meals. Dabite was born to solve that.
+              </p>
+            </div>
           </div>
 
-          {/* Story */}
-          <Card className="border-woodland/20 mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl text-woodland">The Beginning</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-6 text-kelp">
-              <p>
-                It was a typical Tuesday evening in our college hostel. Arjun and I were sitting in our cramped room, 
-                staring at our empty wallets and growling stomachs. We had just spent our entire month's allowance on 
-                expensive food deliveries and unnecessary purchases. Sound familiar?
-              </p>
-              
-              <p>
-                "Why does eating have to be so expensive?" Arjun sighed, scrolling through food delivery apps showing 
-                ₹300+ meals. "My mom's dal rice costs her ₹50 to make, but here it's ₹250!"
-              </p>
-              
-              <p>
-                That's when it hit us. College students across India were facing the same dilemma – choosing between 
-                expensive restaurant food or unhealthy instant noodles. We realized that while buying clothes and gadgets 
-                at the same time seemed normal, spending ₹500+ daily on food was unsustainable for most students.
-              </p>
-              
-              <p>
-                We started asking around our campus: "What if you could get fresh, homemade-style meals delivered daily 
-                for just ₹99?" The response was overwhelming. Everyone wanted it, but nobody was providing it.
-              </p>
-              
-              <p>
-                <strong className="text-woodland">That's how Dabite was born.</strong> Not in a fancy boardroom, but in a hostel room, 
-                from the genuine need of two broke college students who missed home-cooked food but couldn't afford 
-                expensive alternatives.
-              </p>
-            </CardContent>
-          </Card>
-
-          {/* Mission & Values */}
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <Card className="border-woodland/20">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <Target className="h-6 w-6 text-woodland" />
-                  <span>Our Mission</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="text-kelp">
-                <p>
-                  To make nutritious, homestyle meals accessible and affordable for every college student and young 
-                  professional. We believe good food shouldn't be a luxury – it should be a basic right.
+          {/* Mission & Vision */}
+          <div className="grid md:grid-cols-2 gap-8 mb-16">
+            <Card className="border-woodland/20 bg-confetti/10">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-display font-bold text-woodland mb-4">Our Mission</h3>
+                <p className="text-kelp leading-relaxed">
+                  To bridge the gap between homestyle cooking and student life by connecting home kitchens with students who crave nutritious, affordable, and delicious meals.
                 </p>
               </CardContent>
             </Card>
-
-            <Card className="border-woodland/20">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <Heart className="h-6 w-6 text-woodland" />
-                  <span>Our Values</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="text-kelp">
-                <ul className="space-y-2">
-                  <li>• Affordability without compromising quality</li>
-                  <li>• Fresh, hygienic preparation always</li>
-                  <li>• Supporting local home chefs</li>
-                  <li>• Building community through food</li>
-                </ul>
+            
+            <Card className="border-woodland/20 bg-woodland/5">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-display font-bold text-woodland mb-4">Our Vision</h3>
+                <p className="text-kelp leading-relaxed">
+                  To become the most trusted platform for homestyle meals, ensuring no student goes hungry and every home cook finds purpose in sharing their culinary skills.
+                </p>
               </CardContent>
             </Card>
           </div>
 
-          {/* Founders */}
-          <Card className="border-woodland/20 mb-12">
-            <CardHeader>
-              <CardTitle className="text-2xl text-woodland">Meet the Founders</CardTitle>
-              <CardDescription>Two friends who turned hunger into innovation</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="text-center">
-                  <div className="w-32 h-32 bg-confetti/20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <span className="text-4xl">👨‍💻</span>
+          {/* Stats */}
+          <div className="bg-gradient-to-r from-woodland/10 to-confetti/10 rounded-2xl p-8 mb-16">
+            <h2 className="text-2xl font-display font-bold text-woodland text-center mb-8">
+              Our Impact in Numbers
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {stats.map((stat, index) => (
+                <div key={index} className="text-center">
+                  <div className="text-woodland mb-4 flex justify-center">
+                    {stat.icon}
                   </div>
-                  <h3 className="font-bold text-woodland mb-2">Arjun Sharma</h3>
-                  <p className="text-sm text-kelp mb-2">Co-Founder & CEO</p>
-                  <p className="text-sm text-kelp">
-                    Computer Science graduate who codes by day and dreams of perfect dal-chawal by night. 
-                    Handles tech and operations.
-                  </p>
+                  <div className="text-2xl md:text-3xl font-bold text-woodland mb-2">{stat.number}</div>
+                  <div className="text-sm text-kelp">{stat.label}</div>
                 </div>
-                
-                <div className="text-center">
-                  <div className="w-32 h-32 bg-confetti/20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <span className="text-4xl">👨‍🍳</span>
-                  </div>
-                  <h3 className="font-bold text-woodland mb-2">Rohit Kumar</h3>
-                  <p className="text-sm text-kelp mb-2">Co-Founder & COO</p>
-                  <p className="text-sm text-kelp">
-                    Management graduate with a passion for food and community building. 
-                    Takes care of kitchen partnerships and customer experience.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Achievements */}
-          <Card className="border-woodland/20 mb-12">
-            <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <Award className="h-6 w-6 text-woodland" />
-                <span>Our Journey So Far</span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-4 gap-6 text-center">
-                <div>
-                  <div className="text-3xl font-bold text-woodland mb-2">50,000+</div>
-                  <p className="text-kelp">Meals Delivered</p>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-woodland mb-2">5,000+</div>
-                  <p className="text-kelp">Happy Students</p>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-woodland mb-2">25+</div>
-                  <p className="text-kelp">Partner Kitchens</p>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-woodland mb-2">8</div>
-                  <p className="text-kelp">Cities Covered</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Call to Action */}
-          <div className="text-center">
-            <h2 className="text-2xl font-display font-bold text-woodland mb-4">Join Our Mission</h2>
-            <p className="text-kelp mb-6">
-              Help us make good food accessible to every student. Whether you're a customer, partner chef, 
-              or investor – let's build this together.
-            </p>
-            <div className="flex justify-center space-x-4">
-              <Badge variant="secondary" className="bg-confetti/20 text-woodland px-4 py-2">
-                #FoodForAll
-              </Badge>
-              <Badge variant="secondary" className="bg-confetti/20 text-woodland px-4 py-2">
-                #StudentLife
-              </Badge>
-              <Badge variant="secondary" className="bg-confetti/20 text-woodland px-4 py-2">
-                #HomeCooking
-              </Badge>
+              ))}
             </div>
           </div>
+
+          {/* Values */}
+          <div className="mb-16">
+            <h2 className="text-2xl font-display font-bold text-woodland text-center mb-8">
+              What We Stand For
+            </h2>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="text-center p-6">
+                <div className="w-16 h-16 bg-woodland/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Heart className="h-8 w-8 text-woodland" />
+                </div>
+                <h4 className="font-semibold text-woodland mb-2">Homestyle Love</h4>
+                <p className="text-sm text-kelp">Every meal is prepared with the same care and love as a home-cooked meal</p>
+              </div>
+              <div className="text-center p-6">
+                <div className="w-16 h-16 bg-confetti/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Award className="h-8 w-8 text-woodland" />
+                </div>
+                <h4 className="font-semibold text-woodland mb-2">Quality First</h4>
+                <p className="text-sm text-kelp">We maintain the highest standards of hygiene and nutrition in every meal</p>
+              </div>
+              <div className="text-center p-6">
+                <div className="w-16 h-16 bg-woodland/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Target className="h-8 w-8 text-woodland" />
+                </div>
+                <h4 className="font-semibold text-woodland mb-2">Student-Centric</h4>
+                <p className="text-sm text-kelp">Everything we do is designed keeping student needs and budgets in mind</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Contact CTA */}
+          <Card className="border-woodland/20 bg-woodland text-stark-white">
+            <CardContent className="p-8 text-center">
+              <h3 className="text-2xl font-display font-bold mb-4">Get in Touch</h3>
+              <p className="mb-6 opacity-90">
+                Have questions or want to partner with us? We'd love to hear from you.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <div className="flex items-center space-x-2">
+                  <Mail className="h-4 w-4" />
+                  <span>hello@dabite.com</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <MapPin className="h-4 w-4" />
+                  <span>Delhi NCR, India</span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
       <Footer />

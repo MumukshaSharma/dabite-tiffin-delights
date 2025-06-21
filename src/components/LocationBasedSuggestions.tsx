@@ -35,26 +35,26 @@ const LocationBasedSuggestions = () => {
   ];
 
   return (
-    <div className="mt-8">
-      <div className="flex items-center mb-4">
-        <MapPin className="h-5 w-5 text-primary-accent mr-2" />
-        <h3 className="text-lg font-semibold text-text-dark">
+    <div className="mt-6 sm:mt-8">
+      <div className="flex items-center justify-center mb-4">
+        <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-primary-accent mr-2" />
+        <h3 className="text-base sm:text-lg font-semibold text-text-dark">
           Popular in {location.city}
         </h3>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
         {suggestions.map((item, index) => (
           <Card key={index} className="border-secondary-accent/30 hover:shadow-md transition-shadow bg-primary-bg">
-            <CardContent className="p-4">
-              <div className="flex justify-between items-start mb-2">
-                <h4 className="font-medium text-text-dark">{item.kitchen}</h4>
-                <Badge variant="outline" className="text-xs border-primary-accent text-primary-accent">
+            <CardContent className="p-3 sm:p-4">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
+                <h4 className="font-medium text-text-dark text-sm sm:text-base mb-1 sm:mb-0">{item.kitchen}</h4>
+                <Badge variant="outline" className="text-xs border-primary-accent text-primary-accent self-start">
                   {item.distance}
                 </Badge>
               </div>
               
-              <p className="text-sm text-text-dark/70 mb-3">{item.specialty}</p>
+              <p className="text-xs sm:text-sm text-text-dark/70 mb-3">{item.specialty}</p>
               
               <div className="flex items-center justify-between text-xs text-text-dark/60">
                 <div className="flex items-center">
@@ -63,7 +63,8 @@ const LocationBasedSuggestions = () => {
                 </div>
                 <div className="flex items-center">
                   <Clock className="h-3 w-3 mr-1" />
-                  {item.deliveryTime}
+                  <span className="hidden sm:inline">{item.deliveryTime}</span>
+                  <span className="sm:hidden">{item.deliveryTime.split(' ')[0]}</span>
                 </div>
               </div>
             </CardContent>

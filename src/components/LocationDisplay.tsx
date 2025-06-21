@@ -36,7 +36,7 @@ const LocationDisplay = () => {
     : selectedCity || 'Select Location';
 
   return (
-    <div className="flex items-center space-x-2">
+    <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2 w-full sm:w-auto">
       {/* Auto-detect location button */}
       {!location && hasPermission !== false && (
         <Button
@@ -44,14 +44,14 @@ const LocationDisplay = () => {
           size="sm"
           onClick={requestLocation}
           disabled={isLoading}
-          className="text-primary-accent hover:text-primary-accent/80 hover:bg-secondary-accent/20"
+          className="w-full sm:w-auto text-primary-accent hover:text-primary-accent/80 hover:bg-secondary-accent/20 text-xs sm:text-sm px-2 sm:px-4"
         >
           {isLoading ? (
-            <Loader2 className="h-4 w-4 animate-spin" />
+            <Loader2 className="h-3 w-3 sm:h-4 sm:w-4 animate-spin" />
           ) : (
-            <MapPin className="h-4 w-4" />
+            <MapPin className="h-3 w-3 sm:h-4 sm:w-4" />
           )}
-          {isLoading ? 'Detecting...' : 'Detect Location'}
+          <span className="ml-1 sm:ml-2">{isLoading ? 'Detecting...' : 'Detect Location'}</span>
         </Button>
       )}
 
@@ -60,11 +60,12 @@ const LocationDisplay = () => {
         <DropdownMenuTrigger asChild>
           <Button 
             variant="ghost" 
-            className="text-primary-accent hover:text-primary-accent/80 hover:bg-secondary-accent/20 max-w-[200px] justify-start"
+            className="w-full sm:w-auto text-primary-accent hover:text-primary-accent/80 hover:bg-secondary-accent/20 max-w-full sm:max-w-[250px] justify-start text-xs sm:text-sm px-2 sm:px-4"
           >
-            <MapPin className="h-4 w-4 mr-2" />
+            <MapPin className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2 flex-shrink-0" />
             <span className="truncate">
-              {location ? `Delivering to: ${displayLocation}` : displayLocation}
+              <span className="hidden sm:inline">Delivering to: </span>
+              {displayLocation}
             </span>
           </Button>
         </DropdownMenuTrigger>
@@ -75,7 +76,7 @@ const LocationDisplay = () => {
               <DropdownMenuItem 
                 key={city}
                 onClick={() => handleCitySelect(city)}
-                className="cursor-pointer hover:bg-secondary-accent/20"
+                className="cursor-pointer hover:bg-secondary-accent/20 text-sm"
               >
                 {city}
               </DropdownMenuItem>
@@ -87,8 +88,9 @@ const LocationDisplay = () => {
       {/* Error indicator */}
       {error && hasPermission === false && (
         <div className="flex items-center text-xs text-cta-color">
-          <AlertCircle className="h-3 w-3 mr-1" />
+          <AlertCircle className="h-3 w-3 mr-1 flex-shrink-0" />
           <span className="hidden sm:inline">Location access denied</span>
+          <span className="sm:hidden">Location denied</span>
         </div>
       )}
     </div>
